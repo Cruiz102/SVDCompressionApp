@@ -1,0 +1,3 @@
+{
+    "files": ["main.py","compress_widget.py","image_viewport.py","info_widget.py","graph_widget.py"]
+}
