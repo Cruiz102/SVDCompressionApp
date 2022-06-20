@@ -1,7 +1,4 @@
 
-import PySide6.QtWidgets as qw
-import PySide6.QtCore as qc
-from PIL.ImageQt import ImageQt
 import numpy as np
 from PIL import Image
 
@@ -9,6 +6,7 @@ from PIL import Image
 class SVDImage():
     def __init__(self, filename):
         self.filename = filename
+        self.singularValuesLength = 0
         self.SVDArrays = self.LoadSVD(self.filename)
 
     def LoadSVD(self,file):
@@ -23,6 +21,7 @@ class SVDImage():
         R_SVD = [r_s,r_v,r_d]
         G_SVD = [g_s,g_v,g_d]
         B_SVD = [b_s,b_v,b_d]
+        self.singularValuesLength = len(r_v)
         return (R_SVD,G_SVD,B_SVD)
 
     def RankImageArray(self,arrays, rank): 

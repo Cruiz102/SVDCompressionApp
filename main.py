@@ -8,21 +8,29 @@ from info_widget import InfoWidget
 
 
 
-class Widget(QWidget):
+class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setGeometry(0,0,1920,1080)
+        # Widgets
         HorizontalLayout = qw.QHBoxLayout()
         compress_w = CompressWidget()
         central_w = CentralWidget()
         info_w = InfoWidget()
+
         HorizontalLayout.addWidget(compress_w)
         HorizontalLayout.addWidget(central_w)
         HorizontalLayout.addWidget(info_w)
 
         #Connect Signals to Slots
-        compress_w.FileName.connect(central_w.loadToLeftView)
-        compress_w.FileName.connect(central_w.loadToRightView)
+            # compress_widget
+        compress_w.FileName.connect(central_w.changeFileName)
+        compress_w.Compress.clicked.connect(central_w.loadToRightView)
+        compress_w.SaveButtom.clicked.connect(central_w.saveCompressImage)
+        compress_w.Slider.valueChanged.connect(central_w.changeRankValue)
+            #image_viewport
+        central_w.singularValuesLength.connect(compress_w.changeMaximumValueSlider)
+
 
         
 
@@ -35,7 +43,9 @@ if __name__ == "__main__":
 
     QPushButton{
         font-size: 22px;
-        background-color: rgb(182,168,168);
+        background-color: rgb(106, 174, 234);
+        border-width: 5px solid black;
+        border-radius: 50x;
 
     }
     InfoWidget{
@@ -50,7 +60,7 @@ if __name__ == "__main__":
     
     """
     app = QApplication([])
-    window = Widget()
+    window = MainWindow()
     window.setStyleSheet(style)
     window.showMaximized()
     sys.exit(app.exec())
