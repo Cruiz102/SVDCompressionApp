@@ -14,7 +14,9 @@ class CentralWidget(qw.QWidget):
         self.loadToRightView = image_viewport.loadCompressedImage
         Vertical = qw.QVBoxLayout()
         Vertical.addWidget(image_viewport)
-        Vertical.addWidget(GraphWidget())
+
+        # Graph Widget Coming Soon!
+        #Vertical.addWidget(GraphWidget())
         self.setLayout(Vertical)
         self.setMaximumWidth(1000)
 
@@ -23,6 +25,7 @@ class CentralWidget(qw.QWidget):
         self.saveCompressImage = image_viewport.SaveCompressImage
         self.changeRankValue = image_viewport.changeRankValue
         self.changeFileName = image_viewport.changeFileName
+        self.openImageWindow = image_viewport.openImageWindow
         # Signals
         self.singularValuesLength = image_viewport.SingularValuesLength
 

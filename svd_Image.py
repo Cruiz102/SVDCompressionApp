@@ -8,6 +8,7 @@ class SVDImage():
         self.filename = filename
         self.singularValuesLength = 0
         self.SVDArrays = self.LoadSVD(self.filename)
+        self.progressCounter = 0
 
     def LoadSVD(self,file):
         im = Image.open(file)
@@ -32,6 +33,7 @@ class SVDImage():
         Uh = U.transpose()
         for i in range(rank):
             rankImageArray +=  S[i]* np.outer(Uh[i],Vh[i])
+            self.progressCounter += 1
         return rankImageArray
 
     def RankImageSVD(self, rank):

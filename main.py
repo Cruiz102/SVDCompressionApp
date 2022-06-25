@@ -5,6 +5,7 @@ import PySide6.QtWidgets as qw
 from central_widget import CentralWidget
 from compress_widget import CompressWidget
 from info_widget import InfoWidget
+from image_window import ShowImageWindow
 
 
 
@@ -28,6 +29,7 @@ class MainWindow(QWidget):
         compress_w.Compress.clicked.connect(central_w.loadToRightView)
         compress_w.SaveButtom.clicked.connect(central_w.saveCompressImage)
         compress_w.Slider.valueChanged.connect(central_w.changeRankValue)
+        compress_w.ExpandImages.clicked.connect(central_w.openImageWindow)
             #image_viewport
         central_w.singularValuesLength.connect(compress_w.changeMaximumValueSlider)
 
@@ -35,7 +37,7 @@ class MainWindow(QWidget):
         
 
         self.setLayout(HorizontalLayout)
-        
+
 
 
 if __name__ == "__main__":
@@ -59,7 +61,7 @@ if __name__ == "__main__":
     }
     
     """
-    app = QApplication([])
+    app = QApplication(sys.argv)
     window = MainWindow()
     window.setStyleSheet(style)
     window.showMaximized()

@@ -16,14 +16,14 @@ class CompressWidget(qw.QWidget):
         self.RankLabel = qw.QLabel(f"<h2><center>{self.rankvalue}<center></h2>")
         self.Slider = qw.QSlider(qc.Qt.Horizontal)
         self.Compress = qw.QPushButton(text = "Compress")
-        ExpandImages = qw.QPushButton(text = "Expand Images")
+        self.ExpandImages = qw.QPushButton(text = "Expand Images")
         self.SaveButtom = qw.QPushButton(text = "Save Images")
         Vertical.addWidget(ChooseButton)
         Vertical.addWidget(self.NameLabel)
         Vertical.addWidget(self.RankLabel)
         Vertical.addWidget(self.Slider)
         Vertical.addWidget(self.Compress)
-        Vertical.addWidget(ExpandImages)
+        Vertical.addWidget(self.ExpandImages)
         Vertical.addWidget(self.SaveButtom)
         self.setLayout(Vertical)
         self.setMaximumWidth(200)
@@ -45,6 +45,7 @@ class CompressWidget(qw.QWidget):
             filter= "*png *.jpg  *.jpeg" )
         self.FileName.emit(str(result[0]))
         self.NameLabel.setText(str(result[0]))
+        print(result)
         return result[0]
 
     def changeMaximumValueSlider(self, singularValues):
